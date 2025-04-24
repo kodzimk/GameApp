@@ -2,7 +2,7 @@
 <pre>
 Game App
 ---------------------------------------------------
-Application about Uncharted 4: A Thief's End ***everything related to the game*** <br>
+Application about the game Uncharted 4: A Thief's <br>
 </pre>
 </div>
 
