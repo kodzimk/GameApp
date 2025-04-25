@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:uncharted/features/character_page/view/character_page.dart';
-import 'package:uncharted/features/plot_Page/view/plot_page.dart';
+import 'package:uncharted/features/entry_page/view/view.dart';
 
-class EntryPage extends StatefulWidget {
-  const EntryPage({super.key});
+class PlotPage extends StatefulWidget {
+  const PlotPage({super.key});
 
   @override
-  State<EntryPage> createState() => _EntryPageState();
+  State<PlotPage> createState() => _PlotPageState();
 }
 
-class _EntryPageState extends State<EntryPage> {
+class _PlotPageState extends State<PlotPage> {
   int _selectedIndex = 0;
   final ScrollController _homeController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255,125,108,104),
+backgroundColor: Color.fromARGB(255,125,108,0),
       bottomNavigationBar: SizedBox(height: 105, child: BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       elevation: 10.0,
@@ -53,10 +53,11 @@ class _EntryPageState extends State<EntryPage> {
         ],
         backgroundColor: Color.fromARGB(255,105,86,80),
         currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
         onTap: (int index) {
           switch (index) {
-            case 0:
-             Navigator.of(context).pushNamed('/Plot');
+            case 1:
+             Navigator.of(context).pushNamed('/Entry');
             case 2:
               Navigator.of(context).pushNamed('/Character');
           }
@@ -68,5 +69,4 @@ class _EntryPageState extends State<EntryPage> {
       ),  
      );
   }
-
 }
