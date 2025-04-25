@@ -11,13 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_svg: ^2.1.0
+  device_preview: ^1.2.0
   cupertino_icons: ^1.0.8
+  chiclet: ^1.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  device_preview: 1.2.0
   flutter_lints: ^5.0.0
 
 flutter:
