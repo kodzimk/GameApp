@@ -1,7 +1,7 @@
 import 'package:uncharted/features/character_page/view/character_page.dart';
+import 'package:uncharted/features/chat_page/view/chat_page.dart';
 import 'package:uncharted/features/entry_page/entry_page.dart';
 import 'package:uncharted/features/plot_page/plot_page.dart';
-import 'package:uncharted/features/character_page/character_page.dart';
 import 'package:flutter/material.dart';
 import 'theme/theme.dart';
 
@@ -22,6 +22,7 @@ class _UnchartedAppState extends State<UnchartedApp> {
         '/Entry': (context) => EntryPage(),
         '/Plot': (context) => PlotPage(),
          '/Character': (context) => CharacterPage(),
+         '/Chat': (context) => ChatPage(),
       },
       initialRoute: '/Entry',
     );

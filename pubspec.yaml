@@ -11,13 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.8
+  device_preview: ^1.2.0
+  flutter_gemini: ^3.0.0
+  dash_chat_2: ^0.0.21
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  device_preview: 1.2.0
   flutter_lints: ^5.0.0
 
 flutter:
@@ -27,7 +28,7 @@ flutter:
         - asset: assets/fonts/Raleway-Regular.ttf
     - family: Cinzel
       fonts:
-        - asset:  assets/fonts/Cinzel-Regular.ttf
+        - asset:  assets/fonts/Cinzel-Medium.ttf
   assets:
    - assets/images/
   uses-material-design: true
