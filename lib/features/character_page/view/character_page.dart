@@ -1,11 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:uncharted/API/service_model.dart';
-=======
->>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
 import '../widgets/bottom_app.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({super.key});
@@ -15,96 +13,132 @@ class CharacterPage extends StatefulWidget {
 }
 
 class _CharacterPageState extends State<CharacterPage> {
-<<<<<<< HEAD
-  String aboutCharacter = '                                                                                                                                   ';
+
+  bool ignore = true;
+  String aboutCharacter = '';
   String quesiton = '';
-=======
->>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
+  List<String> message = [''];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255,125,108,104),
       bottomNavigationBar:BottomApp(),
-<<<<<<< HEAD
-      body:Column(children: [ Container(
+      body:Column(children: [ Row(crossAxisAlignment: CrossAxisAlignment.start, children: [ 
+               Container(
+                margin: EdgeInsets.only(
+                  top: 100,
+                  left: 10,
+                ),
+                child:  SizedBox(width: 320,child:TextField(
+                  decoration: defaultInputDecoration(),
+                  onChanged: (value) {
+                    quesiton = value;
+                  },
+                ),
+              ),
+               ),
+              Container(
                   margin: EdgeInsets.only(
-                    left: 350.0,
-                    top: 50.0
+                    top: 95,
+                    left: 10,
                   ),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
-                        color: Color.fromARGB(255,105,86,80),
-                        width: 6.0,
+                        color: Colors.white,
+                        width: 4.0,
                       ),
                     ),
-                    borderRadius: BorderRadius.circular(36.0),
+                    borderRadius: BorderRadius.circular(26.0),
                   ),
                   child: ElevatedButton(
-                    onPressed: () async { log(quesiton); aboutCharacter = await ApiService.sendMessage(message: quesiton);},
+                    onPressed: ()
+                     async {      
+                    final gemini = Gemini.instance;
+                    gemini.prompt(parts: [
+                    Part.text(quesiton  + "from  uncharted 4 a theif end talk about him maximum 300 words"),
+                       ]).then((value)
+                         {
+                         setState(() {
+                            aboutCharacter = value?.output ?? "";
+                            ignore = false;
+                           });
+                         });       
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255,105,86,80),
-                      fixedSize: const Size(150, 40),
+                      backgroundColor: Colors.white,
+                      fixedSize: const Size(40, 38),
                       elevation: 0,
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       minimumSize: Size.zero,
                     ),
-                    child: Text(
-                      'Search',
-                      style: TextStyle(fontFamily: 'Cinzel',color: Colors.white),
-                      ),
-                  ),
-                ), Container(margin:  EdgeInsets.only(
-                    bottom: 10,
-                    right: 80.0,
-                    left: 20.0,
-                  ),child: TextField(onChanged: (value) => quesiton = value,
-                    decoration:  defaultInputDecoration(),),
-                  
-    ),Container(margin: EdgeInsets.only(
-                    right: 0.0,
-                    top: 20.0
-                  ),child:  Text(aboutCharacter,style: TextStyle(
-      fontFamily: 'Cinzel',
-      fontSize: 15,
-      color: Colors.white,
-      ),
-      ),), Container(
-                  margin: EdgeInsets.only(
-                    right: 200.0,
-                    top: 500.0
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Color.fromARGB(255,105,86,80),
-                        width: 6.0,
-                      ),
-                    ),
-                    borderRadius: BorderRadius.circular(36.0),
-                  ),
-                  child: ElevatedButton(
-                    onPressed: (){  Navigator.of(context).pushNamed('/Chat');},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255,105,86,80),
-                      fixedSize: const Size(150, 40),
-                      elevation: 0,
-                      padding: EdgeInsets.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      minimumSize: Size.zero,
-                    ),
-                    child: Text(
-                      'Start Chat',
-                      style: TextStyle(fontFamily: 'Cinzel',color: Colors.white),
-                      ),
+                    child: Text('->'),
                   ),
                 ),
           ]),
+
+           SizedBox( 
+           child: Container(
+              margin: EdgeInsets.only(
+                    top: 20,
+                    left: 20,
+                    right: 20,
+                  ),
+                  child: Text(
+                   aboutCharacter,
+                    style: TextStyle(
+                        fontFamily: 'Cinzel',
+                        color: Colors.white,
+                        fontSize: 11,
+                      ),
+                    ),
+          ),
+           ),
+       Opacity(opacity: ignore ? 0.0 : 1.0,
+            child: IgnorePointer( ignoring: ignore,
+              child: Container( 
+                  margin: EdgeInsets.only(
+                    right: 160,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        
+                        color: Color.fromARGB(255,105,86,80),
+                        width: 4.0,
+                      ),
+                    ),
+                    borderRadius: BorderRadius.circular(26.0),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {Navigator.of(context).pushNamed('/Chat');},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255,105,86,80),
+                      fixedSize: const Size(200, 38),
+                      elevation: 0,
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      minimumSize: Size.zero,
+                      
+                    ),
+                    child: Text(
+                      'Start chat',
+                      style: TextStyle(
+                        fontFamily: 'Cinzel',
+                        color: Colors.white
+                      ),
+                      ),
+                  ),
+                ),
+            ),
+          ),
+        ])
     );
   }
   InputDecoration defaultInputDecoration({
-  String hintText = 'Write character name',
+  String hintText = 'Write character name or anything',
   TextStyle hintStyle = const TextStyle(color: Colors.grey),
   Color? fillColor,
 }) =>
@@ -129,24 +163,4 @@ class _CharacterPageState extends State<CharacterPage> {
     );
 }
 
-class Button extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-     return Scaffold(body: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            child: Icon(
-              Icons.send,
-              color: Colors.white,
-            ),
-      )
-    );
-  }
-}
-=======
-      body: Text('asdasdadsda'),
-      );  
-  }
-}
 
->>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7

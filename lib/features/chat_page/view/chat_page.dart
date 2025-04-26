@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:dash_chat_2/dash_chat_2.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});

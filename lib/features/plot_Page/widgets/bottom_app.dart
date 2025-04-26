@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BottomApp extends StatelessWidget {
-<<<<<<< HEAD
-  final int _selectedIndex = 0;
-=======
   int _selectedIndex = 0;
   final ScrollController _homeController = ScrollController();
->>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
   @override
   Widget build(BuildContext context) {
     return SizedBox(height: 105, child: BottomNavigationBar(
