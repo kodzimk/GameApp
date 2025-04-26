@@ -1,7 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:uncharted/API/service_model.dart';
+=======
+>>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
 import '../widgets/bottom_app.dart';
 
 class CharacterPage extends StatefulWidget {
@@ -12,13 +15,17 @@ class CharacterPage extends StatefulWidget {
 }
 
 class _CharacterPageState extends State<CharacterPage> {
+<<<<<<< HEAD
   String aboutCharacter = '                                                                                                                                   ';
   String quesiton = '';
+=======
+>>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255,125,108,104),
       bottomNavigationBar:BottomApp(),
+<<<<<<< HEAD
       body:Column(children: [ Container(
                   margin: EdgeInsets.only(
                     left: 350.0,
@@ -136,3 +143,10 @@ class Button extends StatelessWidget {
     );
   }
 }
+=======
+      body: Text('asdasdadsda'),
+      );  
+  }
+}
+
+>>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7

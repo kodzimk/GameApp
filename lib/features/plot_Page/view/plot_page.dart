@@ -1,5 +1,11 @@
 
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
+import 'package:uncharted/features/character_page/view/character_page.dart';
+import 'package:uncharted/features/entry_page/view/view.dart';
+import 'package:chiclet/chiclet.dart';
+>>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
 import '../widgets/section.dart';
 import '../widgets/bottom_app.dart';
 
