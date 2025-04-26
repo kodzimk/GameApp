@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
 import 'package:flutter_svg/flutter_svg.dart';
+>>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
 
 class SectionData {
   final Color color;
@@ -51,7 +54,11 @@ class Section extends StatelessWidget {
               style: const TextStyle(
                 color: Color.fromARGB(255, 42, 51, 54),
                 fontWeight: FontWeight.bold,
+<<<<<<< HEAD
+                fontFamily: 'Cinzel',
+=======
                 fontFamily: 'Cenzil',
+>>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
                 fontSize: 18.0,
               ),
             ),
@@ -96,7 +103,11 @@ class Section extends StatelessWidget {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       minimumSize: Size.zero,
                     ),
+<<<<<<< HEAD
+                    child: Text(data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: data.colorOfText,fontSize: 11),),
+=======
                     child: Text(data.titles[i],style: TextStyle(fontFamily: 'Cenzil',color: data.colorOfText),),
+>>>>>>> f49ed9fe3caf0b9ddeade8de70fa6203d53f16e7
                   ),
                 )
               : Container(
