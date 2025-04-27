@@ -1,5 +1,7 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
+
 
 class SectionData {
   final Color color;
@@ -11,6 +13,7 @@ class SectionData {
   final String titulo;
   final Color colorOfText;
   final int StartIndex;
+  final List<String> textForQuest;
 
   const SectionData({
     required this.color,
@@ -22,6 +25,7 @@ class SectionData {
     required this.titles,
     required this.colorOfText,
     required this.StartIndex,
+    required this.textForQuest,
   });
 }
 
@@ -39,7 +43,7 @@ class Section extends StatefulWidget {
   State<Section> createState() => _SectionState();
 }
  class _SectionState extends State<Section> {
- 
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -79,7 +83,7 @@ class Section extends StatefulWidget {
         ),
         ...List.generate(
           widget.data.count,
-          (i) => i % 9 != 4
+          (i) => i % 9 != 20
               ? Container(
                   margin: EdgeInsets.only(
                     bottom: i != 8 ? 24.0 : 0,
@@ -96,21 +100,21 @@ class Section extends StatefulWidget {
                     borderRadius: BorderRadius.circular(36.0),
                   ),
                   child: ElevatedButton(
-                    onPressed: () {
-                        setState(() {
+                    onPressed: ()  {
+                      log((i + widget.data.StartIndex).toString());
+                            if(options[i + widget.data.StartIndex] == 1 && i + widget.data.StartIndex + 1 <= 23)
+                            {
+                              setState(() {
+                                 options[i + widget.data.StartIndex + 1] = 1;
+                             });
+                            }
+                                    
                             if(options[i + widget.data.StartIndex] == 1)
                             {
-                          log((i + widget.data.StartIndex).toString());
-                               if(i + widget.data.StartIndex == 11 || i + widget.data.StartIndex == 4 ||  i + widget.data.StartIndex == 18)
-                                 options[i + widget.data.StartIndex + 2] = 1;
-                            else
-                                 options[i + widget.data.StartIndex + 1] = 1;
-
-                                 Navigator.of(context).pushNamed('/Part',arguments: widget.data.titles[i]);
-                            }                                         
-                        });
+                                Navigator.of(context).pushNamed('/Part',arguments: {widget.data.titles[i],widget.data.textForQuest[i]});
+                            }
+                            
                       },
-
                      style: ElevatedButton.styleFrom(
                       backgroundColor: widget.data.color,
                       fixedSize: const Size(180, 48),

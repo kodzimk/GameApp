@@ -1,12 +1,17 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:flutter_gemini/flutter_gemini.dart';
 
 class PartPage extends StatefulWidget {
   const PartPage({super.key});
-
   @override
   State<PartPage> createState() => __PartPageState();
+}
+
+class ScreenArguments {
+  final String title;
+  final String message;
+
+  ScreenArguments(this.title, this.message);
 }
 
 class __PartPageState extends State<PartPage> {
@@ -16,23 +21,24 @@ class __PartPageState extends State<PartPage> {
     bool isTake =false;
 
      @override
-  void didChangeDependencies() async{
-    final args = ModalRoute.of(context)?.settings.arguments;
+     void didChangeDependencies() {
+     final args = ModalRoute.of(context)!.settings.arguments ;
     if(args == null)
     {
-      log("You must provide args");
-      return;
+         log("null");
     }
 
-    if(args is! String)
-    {
-       log("Provide string args");
-       return;
-    }
-
-    setState(()  {    
-        appBarText = args;     
-    });
+      setState(() {
+          appBarText = args.toString();
+           for(int i = 0;i < appBarText.length;i++)
+           {
+              if(appBarText[i] == ',')
+              {
+                  arcText = appBarText.substring(i + 1,appBarText.length - 1);
+                  appBarText = appBarText.substring(1,i);
+              }
+           }
+      });
 
     super.didChangeDependencies();
   }
@@ -61,20 +67,6 @@ class __PartPageState extends State<PartPage> {
   }
   Widget TextArc() 
   {
-    if(!isTake)
-    {
-            final gemini = Gemini.instance;
-              gemini.prompt(parts: [
-             Part.text("Talk about the arc named" + appBarText  + "from uncharted 4: A Theif End him maximum 300 words"),
-             ]).then((value)
-              {
-                 setState(() {               
-                     arcText =  value?.output ?? 'asdasda';      
-                     isTake = true;
-                 });
-              });
-    }
-
               return SingleChildScrollView(child:  Text(
               arcText,
               style:  TextStyle(

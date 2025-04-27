@@ -57,7 +57,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                      async {      
                     final gemini = Gemini.instance;
                     gemini.prompt(parts: [
-                    Part.text(quesiton  + "from uncharted 4: A Theif End ,talk about him maximum 290 words"),
+                    Part.text(quesiton  + "from uncharted 4: A Theif End ,talk about him maximum 280 words"),
                        ]).then((value)
                          {
                          setState(() {
@@ -151,11 +151,11 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
       }
     }
 
-    if(quesiton.toUpperCase() == "NATHAN" || quesiton.toUpperCase() == "ROSS" || quesiton.toUpperCase() == "ADLER" || quesiton.toUpperCase() == "SAM" || 
-      quesiton.toUpperCase() == "ELENA" || quesiton.toUpperCase() == "VICTOR"||  quesiton.toUpperCase() == "SULLIVAN" || quesiton.toUpperCase() == "FISHER" ||
-      quesiton.toUpperCase() ==  "RAFE" || quesiton.toUpperCase() ==  "HECTOR" || quesiton.toUpperCase() ==  "DRAKE" || quesiton.toUpperCase() ==  "ALCAZAR" || 
-      quesiton.toUpperCase() ==  "CASSIE" || quesiton.toUpperCase() ==  "EVELYN" || quesiton.toUpperCase() ==  "NADINE" || quesiton.toUpperCase() ==  "ROSS" || 
-      quesiton.toUpperCase() == "MORGAN" || quesiton.toUpperCase() ==  "CASSANDRA"|| quesiton.toUpperCase() == "KAISAR")
+    if(quesiton.toUpperCase() == "NATHAN" || quesiton.toUpperCase() == "GUSTAVO" || quesiton.toUpperCase() == "ROSS" || quesiton.toUpperCase() == "ADLER" || quesiton.toUpperCase() == "SAM" || quesiton.toUpperCase() == "JAMESON" || 
+      quesiton.toUpperCase() == "ELENA" || quesiton.toUpperCase() == "VICTOR"||  quesiton.toUpperCase() == "SULLIVAN" || quesiton.toUpperCase() == "FISHER" ||  quesiton.toUpperCase() == "VARGAS" ||quesiton.toUpperCase() == "SHORELINE" || 
+      quesiton.toUpperCase() ==  "RAFE" || quesiton.toUpperCase() ==  "HECTOR" || quesiton.toUpperCase() ==  "DRAKE" || quesiton.toUpperCase() ==  "ALCAZAR" || quesiton.toUpperCase() == "FRANCIS" ||
+      quesiton.toUpperCase() ==  "CASSIE" || quesiton.toUpperCase() ==  "EVELYN" || quesiton.toUpperCase() ==  "NADINE" || quesiton.toUpperCase() ==  "ROSS" || quesiton.toUpperCase() == "CHRISTOPHER" ||
+      quesiton.toUpperCase() == "MORGAN" || quesiton.toUpperCase() ==  "CASSANDRA"|| quesiton.toUpperCase() == "KAISAR" || quesiton.toUpperCase() == "RICHARD" || quesiton.toUpperCase() == "THOMAS"|| quesiton.toUpperCase() == "TEW")
       {
           ignore = false;
           chatCharacter = quesiton;
@@ -170,12 +170,12 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
              break;
           }
       }
-
-     if(chatCharacter.toUpperCase() == "NATHAN" || chatCharacter.toUpperCase() == "SAM" || chatCharacter.toUpperCase() == "ELENA" || chatCharacter.toUpperCase() == "VICTOR"||
-        chatCharacter.toUpperCase() == "RAFE" || chatCharacter.toUpperCase() == "HECTOR" || chatCharacter.toUpperCase() == "DRAKE" || chatCharacter.toUpperCase() == "ALCAZAR" || 
-        chatCharacter.toUpperCase() == "CASSIE" || chatCharacter.toUpperCase() == "EVELYN" || chatCharacter.toUpperCase() == "NADINE" || chatCharacter.toUpperCase() == "ROSS"|| 
-        chatCharacter.toUpperCase() =="MORGAN" || chatCharacter.toUpperCase() == "CASSANDRA" || chatCharacter.toUpperCase() == "KAISAR")
-        { 
+  if(chatCharacter.toUpperCase() == "NATHAN" || chatCharacter.toUpperCase() == "GUSTAVO" || chatCharacter.toUpperCase() == "ROSS" || chatCharacter.toUpperCase() == "ADLER" || chatCharacter.toUpperCase() == "SAM" || chatCharacter.toUpperCase() == "JAMESON" || 
+      chatCharacter.toUpperCase() == "ELENA" || chatCharacter.toUpperCase() == "VICTOR"||  chatCharacter.toUpperCase() == "SULLIVAN" || chatCharacter.toUpperCase() == "FISHER" ||  chatCharacter.toUpperCase() == "VARGAS" ||chatCharacter.toUpperCase() == "SHORELINE" || 
+      chatCharacter.toUpperCase() ==  "RAFE" || chatCharacter.toUpperCase() ==  "HECTOR" || chatCharacter.toUpperCase() ==  "DRAKE" || chatCharacter.toUpperCase() ==  "ALCAZAR" || chatCharacter.toUpperCase() == "FRANCIS" ||
+      chatCharacter.toUpperCase() ==  "CASSIE" || chatCharacter.toUpperCase() ==  "EVELYN" || chatCharacter.toUpperCase() ==  "NADINE" || chatCharacter.toUpperCase() ==  "ROSS" || chatCharacter.toUpperCase() == "CHRISTOPHER" ||
+      chatCharacter.toUpperCase() == "MORGAN" || chatCharacter.toUpperCase() ==  "CASSANDRA"|| chatCharacter.toUpperCase() == "KAISAR" || chatCharacter.toUpperCase() == "RICHARD" || chatCharacter.toUpperCase() == "THOMAS"|| chatCharacter.toUpperCase() == "TEW")
+      {
           ignore = false;
         }
         else{
