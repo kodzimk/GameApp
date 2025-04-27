@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class SectionData {
@@ -9,6 +10,7 @@ class SectionData {
   final List<String> titles;
   final String titulo;
   final Color colorOfText;
+  final int StartIndex;
 
   const SectionData({
     required this.color,
@@ -19,8 +21,11 @@ class SectionData {
     required this.count,
     required this.titles,
     required this.colorOfText,
+    required this.StartIndex,
   });
 }
+
+List<int> options = List.filled(24, 0);
 
 class Section extends StatelessWidget {
   final SectionData data;
@@ -86,8 +91,15 @@ class Section extends StatelessWidget {
                     borderRadius: BorderRadius.circular(36.0),
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
+                    onPressed: () {
+                         log((i + data.StartIndex).toString());
+                      if(i + data.StartIndex == 11 || i + data.StartIndex == 4 ||  i + data.StartIndex == 18)
+                         options[i + data.StartIndex + 2] = 1;
+                      else
+                         options[i + data.StartIndex + 1] = 1;
+                      },
+
+                     style: ElevatedButton.styleFrom(
                       backgroundColor: data.color,
                       fixedSize: const Size(180, 48),
                       elevation: 0,
@@ -95,17 +107,22 @@ class Section extends StatelessWidget {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       minimumSize: Size.zero,
                     ),
-
-                    child: Text(data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: data.colorOfText,fontSize: 11),),
+                    
+                    child: VisibleButton(i),
                   ),
                 )
-              : Container(
-           
-                ),
+              : Container(),
         )
       ],
     );
   }
+
+Widget VisibleButton(int i)
+{
+  return options[i + data.StartIndex] == 1 ? Text(data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: data.colorOfText,fontSize: 11))
+   : Text(data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: Color.fromARGB(100, 100, 100, 100),fontSize: 11)) ;
+}
+ 
 
   double getLeft(int indice) {
     const margin = 72.0;

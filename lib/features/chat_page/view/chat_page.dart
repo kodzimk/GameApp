@@ -16,7 +16,7 @@ class _ChatPageState extends State<ChatPage> {
   ChatUser currentUser = ChatUser(id: "0",firstName: "User");
   List<ChatMessage> m = [];
   String? character = '';
-  ChatUser geminiUser = ChatUser(id: '1');
+  ChatUser geminiUser = ChatUser(id: '1',firstName: '');
 
 
   @override
@@ -38,6 +38,7 @@ class _ChatPageState extends State<ChatPage> {
     character = args;
     geminiUser =  ChatUser(id: '1',firstName: character);
     });
+
     super.didChangeDependencies();
   }
 
@@ -50,11 +51,8 @@ class _ChatPageState extends State<ChatPage> {
             color: Colors.white,
           ),
         title: Text(
-          "Chat with " + (character ?? '...'),
-          style: TextStyle(
-            fontFamily: 'Cinzel',
-            color: Colors.white
-          ),
+          "Chat with " + (character ?? ''),
+          style: Theme.of(context).textTheme.displayLarge,
         ),
         backgroundColor: Color.fromARGB(255, 40,40,40),
       ),
@@ -64,22 +62,19 @@ class _ChatPageState extends State<ChatPage> {
 
   Widget _buildUI()
   {
-    log(character ?? 'asdaddsda');
     return DashChat(currentUser: currentUser, onSend: _sendMessage, messages: m);
   }
 
   void _sendMessage(ChatMessage chatMessage){
        setState(() {
          m = [chatMessage, ...m];
-       });
+    });
             String question = chatMessage.text;
             gemini.chat([
-    Content(parts: [
-      Part.text('Your are ${character} from uncharted 4 a theif end')],
-        role: 'user'),
-    Content(parts: [ 
-      Part.text(question)], 
-        role: 'user'),
+            Content(parts: [
+                    Part.text("Your are ${character} from Uncharted 4 : A Theif's End")],role: 'user'),
+            Content(parts: [ 
+                    Part.text(question)],  role: 'user'),
     ])
         .then((value) {
                ChatMessage? lastmessage = m.firstOrNull;
@@ -95,11 +90,7 @@ class _ChatPageState extends State<ChatPage> {
                 m = [message,...m];
               });
             }
-              })
-              .catchError((e) 
-              {
-              print('error ${e}');
-              });
+    });
   }
 }
 
