@@ -4,14 +4,12 @@ import '../widgets/chat_widget.dart';
 
 class CharacterPage extends StatefulWidget {
   const CharacterPage({super.key});
-
+  
   @override
   State<CharacterPage> createState() => _CharacterPageState();
 }
 
 class _CharacterPageState extends State<CharacterPage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

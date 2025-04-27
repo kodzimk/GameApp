@@ -83,7 +83,9 @@ class _PlotPageState extends State<PlotPage> {
 
   Widget SetState()
   {
-    options[0] = 1;
+    setState(() {
+    options[0] = 1;     
+    });
     return Text('');
   }
   
@@ -101,6 +103,7 @@ class _PlotPageState extends State<PlotPage> {
                     height: 0.0,
                   )
                 : Section(
+                  
                     data: data[i - 1],
                   ),
             separatorBuilder: (_, i) => const SizedBox(

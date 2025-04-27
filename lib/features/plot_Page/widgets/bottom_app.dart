@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BottomApp extends StatelessWidget {
-  int _selectedIndex = 0;
-  final ScrollController _homeController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return SizedBox(height: 105, child: BottomNavigationBar(
@@ -43,7 +41,6 @@ class BottomApp extends StatelessWidget {
           ),
         ],
         backgroundColor: Color.fromARGB(255,105,86,80),
-        currentIndex: _selectedIndex,
         onTap: (int index) {
           switch (index) {
             case 1:
