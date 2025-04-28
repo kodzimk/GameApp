@@ -30,7 +30,6 @@ You cant undestand experience this game's ambience without playing or accomplish
 
 ```sh
 git clone link of project
-in main.dart file store your key into GEMINI_API variable
 cd scripts
 ./install_flutter.sh (if you dont have flutter on your device)
 ./build.bash
@@ -41,7 +40,6 @@ cd scripts
 
 ```sh
 git clone link of project
-in main.dart file store your key into GEMINI_API variable
 cd scripts
 ./build.bash
 ./Run.bash and choose platform
