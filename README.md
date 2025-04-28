@@ -26,7 +26,7 @@ cd scripts
 ./Run.bash and choose platform
 ```
 2.Second way<br>
-[Download](#starquickly-download-multiple-extensions) - install flutter
+[Download](https://docs.flutter.dev/get-started/install/windows/mobile#:~:text=Download%20then%20install%20Flutter) - install flutter
 
 ```sh
 git clone link of project
