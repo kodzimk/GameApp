@@ -7,5 +7,5 @@ const GEMINI_API = "AIzaSyBFId0llJBa6pdcZPOe8FI1DGCfC9hDAWs";
 
 void main() {
   Gemini.init(apiKey: GEMINI_API);
-  runApp(DevicePreview(builder: (context) => const UnchartedApp()));
+  runApp(DevicePreview(isToolbarVisible: false, builder: (context) => const UnchartedApp()));
 }
