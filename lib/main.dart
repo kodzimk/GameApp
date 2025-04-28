@@ -3,7 +3,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter/material.dart';
 import 'uncharted_app.dart';
 
-const GEMINI_API = "";
+const GEMINI_API = "AIzaSyBFId0llJBa6pdcZPOe8FI1DGCfC9hDAWs";
 
 void main() {
   Gemini.init(apiKey: GEMINI_API);
