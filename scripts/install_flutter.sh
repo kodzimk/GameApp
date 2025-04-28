@@ -44,7 +44,7 @@ linux() {
     emptySpace
     echo "Unzipping Flutter SDK... (This may take a while)"
     emptySpace
-    tar xf ./flutter_linux_1.17.5-stable.tar.xz
+    tar xf ./flutter_linux_3.29.3-stable.tar.xz
     emptySpace
     echo "Now you have to add the Flutter SDK to the PATH variable:"
     echo "1. Open a new terminal"
