@@ -1,65 +1,92 @@
-$PRESIGNED_URL = "https://download.llamameta.net/*?Policy=https://storage.googleapis.com/flutter_infra/releases/stable/windows/flutter_windows_1.17.5-stable.zip"
-$MODEL_SIZE = "70B" #Read-Host -Prompt "Enter the list of models to download without spaces (7B,13B,70B,7B-chat,13B-chat,70B-chat), or press Enter for all"
-$TARGET_FOLDER = "D:\Llama2"             # where all files should end up
-if(!(Test-Path -Path $TARGET_FOLDER)){
-    New-Item -ItemType directory -Path $TARGET_FOLDER
+#!/bin/sh
+# Made By Yazeed AlKhalaf
+
+emptySpace() {
+    echo ""
 }
 
-if ($MODEL_SIZE -eq "") {
-    $MODEL_SIZE = "7B,13B,70B,7B-chat,13B-chat,70B-chat"
+header() {
+    echo "Welcome To Uncharted App instal flutter sdk"
+    echo "         "
+    emptySpace
+    emptySpace
 }
 
-#Write-Host "Downloading LICENSE and Acceptable Usage Policy"
-Invoke-WebRequest -Uri ($PRESIGNED_URL.Replace('*',"LICENSE")) -OutFile ($TARGET_FOLDER+"/LICENSE")
-Invoke-WebRequest -Uri ($PRESIGNED_URL.Replace('*',"USE_POLICY.md")) -OutFile ($TARGET_FOLDER+"/USE_POLICY.md")
-
-#Write-Host "Downloading tokenizer"
-Invoke-WebRequest -Uri ($PRESIGNED_URL.Replace('*',"tokenizer.model")) -OutFile ($TARGET_FOLDER+"/tokenizer.model")
-
-# Model sizes
-$model_sizes = $MODEL_SIZE.Split(',')
-
-foreach ($m in $model_sizes)
-{
-    if ($m -eq "7B") {
-        $SHARD = 0
-        $MODEL_PATH = "llama-2-7b"
-    }
-    elseif ($m -eq "7B-chat") {
-        $SHARD = 0
-        $MODEL_PATH = "llama-2-7b-chat"
-    }
-    elseif ($m -eq "13B") {
-        $SHARD = 1
-        $MODEL_PATH = "llama-2-13b"
-    }
-    elseif ($m -eq "13B-chat") {
-        $SHARD = 1
-        $MODEL_PATH = "llama-2-13b-chat"
-    }
-    elseif ($m -eq "70B") {
-        $SHARD = 7
-        $MODEL_PATH = "llama-2-70b"
-    }
-    elseif ($m -eq "70B-chat") {
-        $SHARD = 7
-        $MODEL_PATH = "llama-2-70b-chat"
-    }
-
-    Write-Host "Downloading $MODEL_PATH"
-    $path = $TARGET_FOLDER+"/"+$MODEL_PATH
-    if(!(Test-Path -Path $path)){
-        New-Item -ItemType directory -Path $path
-    }
-
-
-    for ($s=0; $s -le $SHARD; $s++)
-    {
-        $fileName = "consolidated.{0:D2}.pth" -f $s
-        Invoke-WebRequest -Uri ($PRESIGNED_URL.Replace('*',$MODEL_PATH+"/"+$fileName)) -OutFile ($path+"/"+$fileName)
-    }
-	
-Invoke-WebRequest -Uri ($PRESIGNED_URL.Replace('*',$MODEL_PATH+"/params.json")) -OutFile ($path+"/params.json")
-
-
+windows() {
+    echo "You Chose Windows"
+    emptySpace
+    emptySpace
+    echo "Downloading Flutter SDK for Windows... (This may take a while)"
+    emptySpace
+    wget https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.29.3-stable.zip
+    emptySpace
+    echo "Unzipping Flutter SDK... (This may take a while)"
+    emptySpace
+    unzip flutter_windows_3.29.3-stable.zip
+    emptySpace
+    echo "Now you have to add the Flutter SDK to the PATH variable:"
+    echo "1. Press Windows key"
+    echo "2. Search for \"env\", then click on the first result"
+    echo "3. Click on \"Environment Variables\""
+    echo "4. Click on the \"Path\" variable in user variables"
+    echo "5. Click \"Edit\" button"
+    echo "6. Click on \"New\" button"
+    echo "7. Paste this: `pwd`/flutter/bin"
 }
+
+linux() {
+    echo "You Chose Linux"
+    emptySpace
+    emptySpace
+    echo "Downloading Flutter SDK for Linux... (This may take a while)"
+    emptySpace
+    wget  https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.29.3-stable.zip
+    emptySpace
+    echo "Unzipping Flutter SDK... (This may take a while)"
+    emptySpace
+    tar xf ./flutter_linux_1.17.5-stable.tar.xz
+    emptySpace
+    echo "Now you have to add the Flutter SDK to the PATH variable:"
+    echo "1. Open a new terminal"
+    echo "2. Type: \"sudo nano /etc/profile\" or \"sudo nano ~/.bashrc\""
+    echo "      note: OTHER THAN THAT YOU MUST KNOW IT :)"
+    echo "3. Add this line to the end:"
+    echo "      export PATH=\"\$PATH:`pwd`/flutter/bin\""
+    echo "4. Exit with saving changes by:"
+    echo "      - Press \"CTRL + X\""
+    echo "      - Press \"Y\""
+    echo "      - Press \"[ENTER]\""
+}
+
+menu() {
+    PS3="Type the number that corresponds to your OS, followed by [ENTER]:"
+    options=("Windows" "macOS" "Linux" "Quit")
+    clear
+    header
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "Windows")
+                windows
+                break
+                ;;
+            "Linux")
+                linux
+                break
+                ;;
+            "Quit")
+                echo "Bye Bye!"
+                break
+                ;;
+            *) 
+                clear
+                header
+                menu
+                ;;
+        esac
+    done
+}
+
+menu
+
+echo "Done!"
