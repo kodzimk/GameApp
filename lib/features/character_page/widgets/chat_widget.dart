@@ -20,6 +20,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
   Widget build(BuildContext context) {
     
     return Column(children: [Row(crossAxisAlignment: CrossAxisAlignment.start, children: [ 
+             // Input field
                Container(
                 margin: EdgeInsets.only(
                   top: 100,
@@ -29,13 +30,14 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                   decoration: defaultInputDecoration(),
                   onChanged: (value) {
                     quesiton = value;
+                    quesiton = quesiton.capitalize();
                   },
                 ),
               ),
                ),
 
 
-
+            // Input field send button
               Container(
                   margin: EdgeInsets.only(
                     top: 95,
@@ -55,11 +57,11 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                      async {      
                     final gemini = Gemini.instance;
                     gemini.prompt(parts: [
-                    Part.text(quesiton  + "from  uncharted 4 a theif end talk about him maximum 280 words"),
+                    Part.text(quesiton  + "from uncharted 4: A Theif End ,talk about him maximum 280 words"),
                        ]).then((value)
                          {
                          setState(() {
-                           aboutCharacter = value?.output ?? 'NULL';
+                           aboutCharacter = value?.output ?? '';
                            SetQuestion();
                            });
                          });       
@@ -78,7 +80,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
           ]),
 
 
-
+         // Text abotu smth
            SizedBox( 
            child: Container(
               margin: EdgeInsets.only(
@@ -88,16 +90,13 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                   ),
                   child: Text(
                    aboutCharacter,
-                    style: TextStyle(
-                        fontFamily: 'Cinzel',
-                        color: Colors.white,
-                        fontSize: 11,
-                      ),
+                    style: Theme.of(context).textTheme.bodySmall,
                     ),
-          ),
+              ),
            ),
 
 
+       // Start Chat Button
        Opacity(opacity: ignore ? 0.0 : 1.0,
             child: IgnorePointer( ignoring: ignore,
               child: Container( 
@@ -106,8 +105,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                   ),
                   decoration: BoxDecoration(
                     border: Border(
-                      bottom: BorderSide(
-                        
+                      bottom: BorderSide(      
                         color: Color.fromARGB(255,105,86,80),
                         width: 4.0,
                       ),
@@ -131,10 +129,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                     ),
                     child: Text(
                       'Start chat',
-                      style: TextStyle(
-                        fontFamily: 'Cinzel',
-                        color: Colors.white
-                  ),
+                      style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
             ),
@@ -143,13 +138,24 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
 
     ]);
   }
+  
 
   void SetQuestion()
   {
-    if(quesiton.toUpperCase() == "NATHAN" || quesiton.toUpperCase() == "SAM" || quesiton.toUpperCase() == "ELENA" || quesiton.toUpperCase() == "VICTOR"||
-      quesiton.toUpperCase() ==  "RAFE" || quesiton.toUpperCase() ==  "HECTOR" || quesiton.toUpperCase() ==  "DRAKE" || quesiton.toUpperCase() ==  "ALCAZAR" || 
-      quesiton.toUpperCase() ==  "CASSIE" || quesiton.toUpperCase() ==  "EVELYN" || quesiton.toUpperCase() ==  "NADIN" || quesiton.toUpperCase() == "MORGAN" ||
-      quesiton.toUpperCase() ==  "CASSANDRA"|| quesiton.toUpperCase() == "KAISAR")
+    for(int i = 0;i < quesiton.length;i++)
+    {
+      if(quesiton[i] == ' ' || quesiton[i] == ',')
+      {
+        quesiton = quesiton.substring(0,i);
+        break;
+      }
+    }
+
+    if(quesiton.toUpperCase() == "NATHAN" || quesiton.toUpperCase() == "GUSTAVO" || quesiton.toUpperCase() == "ROSS" || quesiton.toUpperCase() == "ADLER" || quesiton.toUpperCase() == "SAM" || quesiton.toUpperCase() == "JAMESON" || 
+      quesiton.toUpperCase() == "ELENA" || quesiton.toUpperCase() == "VICTOR"||  quesiton.toUpperCase() == "SULLIVAN" || quesiton.toUpperCase() == "FISHER" ||  quesiton.toUpperCase() == "VARGAS" ||quesiton.toUpperCase() == "SHORELINE" || 
+      quesiton.toUpperCase() ==  "RAFE" || quesiton.toUpperCase() ==  "HECTOR" || quesiton.toUpperCase() ==  "DRAKE" || quesiton.toUpperCase() ==  "ALCAZAR" || quesiton.toUpperCase() == "FRANCIS" ||
+      quesiton.toUpperCase() ==  "CASSIE" || quesiton.toUpperCase() ==  "EVELYN" || quesiton.toUpperCase() ==  "NADINE" || quesiton.toUpperCase() ==  "ROSS" || quesiton.toUpperCase() == "CHRISTOPHER" ||
+      quesiton.toUpperCase() == "MORGAN" || quesiton.toUpperCase() ==  "CASSANDRA"|| quesiton.toUpperCase() == "KAISAR" || quesiton.toUpperCase() == "RICHARD" || quesiton.toUpperCase() == "THOMAS"|| quesiton.toUpperCase() == "TEW")
       {
           ignore = false;
           chatCharacter = quesiton;
@@ -164,12 +170,12 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
              break;
           }
       }
-
-     if(chatCharacter.toUpperCase() == "NATHAN" || chatCharacter.toUpperCase() == "SAM" || chatCharacter.toUpperCase() == "ELENA" || chatCharacter.toUpperCase() == "VICTOR"||
-        chatCharacter.toUpperCase() == "RAFE" || chatCharacter.toUpperCase() == "HECTOR" || chatCharacter.toUpperCase() == "DRAKE" || chatCharacter.toUpperCase() == "ALCAZAR" || 
-        chatCharacter.toUpperCase() == "CASSIE" || chatCharacter.toUpperCase() == "EVELYN" || chatCharacter.toUpperCase() == "NADIN"|| chatCharacter.toUpperCase() =="MORGAN" ||
-        chatCharacter.toUpperCase() == "CASSANDRA" || chatCharacter.toUpperCase() == "KAISAR")
-        { 
+  if(chatCharacter.toUpperCase() == "NATHAN" || chatCharacter.toUpperCase() == "GUSTAVO" || chatCharacter.toUpperCase() == "ROSS" || chatCharacter.toUpperCase() == "ADLER" || chatCharacter.toUpperCase() == "SAM" || chatCharacter.toUpperCase() == "JAMESON" || 
+      chatCharacter.toUpperCase() == "ELENA" || chatCharacter.toUpperCase() == "VICTOR"||  chatCharacter.toUpperCase() == "SULLIVAN" || chatCharacter.toUpperCase() == "FISHER" ||  chatCharacter.toUpperCase() == "VARGAS" ||chatCharacter.toUpperCase() == "SHORELINE" || 
+      chatCharacter.toUpperCase() ==  "RAFE" || chatCharacter.toUpperCase() ==  "HECTOR" || chatCharacter.toUpperCase() ==  "DRAKE" || chatCharacter.toUpperCase() ==  "ALCAZAR" || chatCharacter.toUpperCase() == "FRANCIS" ||
+      chatCharacter.toUpperCase() ==  "CASSIE" || chatCharacter.toUpperCase() ==  "EVELYN" || chatCharacter.toUpperCase() ==  "NADINE" || chatCharacter.toUpperCase() ==  "ROSS" || chatCharacter.toUpperCase() == "CHRISTOPHER" ||
+      chatCharacter.toUpperCase() == "MORGAN" || chatCharacter.toUpperCase() ==  "CASSANDRA"|| chatCharacter.toUpperCase() == "KAISAR" || chatCharacter.toUpperCase() == "RICHARD" || chatCharacter.toUpperCase() == "THOMAS"|| chatCharacter.toUpperCase() == "TEW")
+      {
           ignore = false;
         }
         else{
@@ -180,6 +186,11 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
 
 }
 
+extension StringExtensions on String { 
+  String capitalize() { 
+    return "${this[0].toUpperCase()}${this.substring(1)}"; 
+  } 
+}
 
 InputDecoration defaultInputDecoration({
   String hintText = 'Write character name',

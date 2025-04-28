@@ -29,6 +29,12 @@ flutter:
     - family: Cinzel
       fonts:
         - asset:  assets/fonts/Cinzel-Medium.ttf
+    - family: GreatVibes
+      fonts:
+        - asset:  assets/fonts/GreatVibes-Regular.ttf
+    - family: Allura
+      fonts:
+        - asset:  assets/fonts/Allura-Regular.ttf
   assets:
    - assets/images/
   uses-material-design: true

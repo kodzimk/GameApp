@@ -1,0 +1,1 @@
+export 'view/part_page.dart';

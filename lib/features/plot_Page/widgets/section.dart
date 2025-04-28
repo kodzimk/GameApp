@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+
 
 class SectionData {
   final Color color;
@@ -9,6 +12,8 @@ class SectionData {
   final List<String> titles;
   final String titulo;
   final Color colorOfText;
+  final int StartIndex;
+  final List<String> textForQuest;
 
   const SectionData({
     required this.color,
@@ -19,16 +24,33 @@ class SectionData {
     required this.count,
     required this.titles,
     required this.colorOfText,
+    required this.StartIndex,
+    required this.textForQuest,
   });
 }
 
-class Section extends StatelessWidget {
+List<int> options = List.filled(24, 0);
+
+class Section extends StatefulWidget {
   final SectionData data;
 
   const Section({
     super.key,
     required this.data,
   });
+  
+  @override
+  State<Section> createState() => _SectionState();
+}
+ class _SectionState extends State<Section> {
+
+  Widget SetState(int i)
+  {
+    setState(() {
+    options[i + widget.data.StartIndex] = 1;
+    });
+    return Text('');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +68,7 @@ class Section extends StatelessWidget {
               width: 16,
             ),
             Text(
-              data.titulo,
+              widget.data.titulo,
               style: const TextStyle(
                 color: Color.fromARGB(255, 42, 51, 54),
                 fontWeight: FontWeight.bold,
@@ -68,8 +90,8 @@ class Section extends StatelessWidget {
           height: 24.0,
         ),
         ...List.generate(
-          data.count,
-          (i) => i % 9 != 4
+          widget.data.count,
+          (i) => i % 9 != 20
               ? Container(
                   margin: EdgeInsets.only(
                     bottom: i != 8 ? 24.0 : 0,
@@ -79,33 +101,56 @@ class Section extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
-                        color: data.colorOscuro,
+                        color: widget.data.colorOscuro,
                         width: 6.0,
                       ),
                     ),
                     borderRadius: BorderRadius.circular(36.0),
                   ),
+                  
                   child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: data.color,
+                    onPressed: ()  {
+                            if(options[i + widget.data.StartIndex] == 1 && i + widget.data.StartIndex + 1 <= 23)
+                            {
+                              setState(() {
+                                 options[i + widget.data.StartIndex + 1] = 1;
+                              });
+                            }
+                                    
+                            if(options[i + widget.data.StartIndex] == 1)
+                            {
+                                Navigator.of(context).pushNamed('/Part',arguments: {widget.data.titles[i],widget.data.textForQuest[i]});
+                            }
+                            
+                      },
+                      
+                      style: ElevatedButton.styleFrom(
+                      backgroundColor: widget.data.color,
                       fixedSize: const Size(180, 48),
                       elevation: 0,
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       minimumSize: Size.zero,
                     ),
-
-                    child: Text(data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: data.colorOfText,fontSize: 11),),
+                    child: VisibleButton(i),
                   ),
                 )
-              : Container(
-           
-                ),
+              : Container(),
         )
       ],
     );
   }
+
+Widget VisibleButton(int i)
+{
+  setState(() {
+       options[widget.data.StartIndex] = 1;
+  });
+
+  return options[i + widget.data.StartIndex] == 1 ? Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: widget.data.colorOfText,fontSize: 11))
+   : Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: Color.fromARGB(75, 100, 100, 100),fontSize: 11)) ;
+}
+ 
 
   double getLeft(int indice) {
     const margin = 72.0;
