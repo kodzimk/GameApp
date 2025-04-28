@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import '../widgets/section.dart';
 import '../widgets/bottom_app.dart';
@@ -221,21 +223,13 @@ class _PlotPageState extends State<PlotPage> {
   ];
   final scrollCtrl = ScrollController();
 
-  Widget SetState()
-  {
-    setState(() {
-    options[0] = 1;     
-    });
-    return Text('');
-  }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255,125,108,104),
       bottomNavigationBar: BottomApp(),
         body: Stack(
-        children: [SetState(),
+        children: [
           ListView.separated(
             controller: scrollCtrl,
             itemBuilder: (_, i) => i == 0
@@ -243,16 +237,15 @@ class _PlotPageState extends State<PlotPage> {
                     height: 0.0,
                   )
                 : Section(
-                  
                     data: data[i - 1],
                   ),
             separatorBuilder: (_, i) => const SizedBox(
               height: 24.0,
             ),
             itemCount: data.length + 1,
-          ),
-        ],
+          ),],
       ),
     );
+
   }
 }

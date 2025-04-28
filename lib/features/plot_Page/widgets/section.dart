@@ -44,6 +44,14 @@ class Section extends StatefulWidget {
 }
  class _SectionState extends State<Section> {
 
+  Widget SetState(int i)
+  {
+    setState(() {
+    options[i + widget.data.StartIndex] = 1;
+    });
+    return Text('');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -99,14 +107,14 @@ class Section extends StatefulWidget {
                     ),
                     borderRadius: BorderRadius.circular(36.0),
                   ),
+                  
                   child: ElevatedButton(
                     onPressed: ()  {
-                      log((i + widget.data.StartIndex).toString());
                             if(options[i + widget.data.StartIndex] == 1 && i + widget.data.StartIndex + 1 <= 23)
                             {
                               setState(() {
                                  options[i + widget.data.StartIndex + 1] = 1;
-                             });
+                              });
                             }
                                     
                             if(options[i + widget.data.StartIndex] == 1)
@@ -115,7 +123,8 @@ class Section extends StatefulWidget {
                             }
                             
                       },
-                     style: ElevatedButton.styleFrom(
+                      
+                      style: ElevatedButton.styleFrom(
                       backgroundColor: widget.data.color,
                       fixedSize: const Size(180, 48),
                       elevation: 0,
@@ -123,7 +132,6 @@ class Section extends StatefulWidget {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       minimumSize: Size.zero,
                     ),
-                    
                     child: VisibleButton(i),
                   ),
                 )
@@ -135,6 +143,10 @@ class Section extends StatefulWidget {
 
 Widget VisibleButton(int i)
 {
+  setState(() {
+       options[widget.data.StartIndex] = 1;
+  });
+
   return options[i + widget.data.StartIndex] == 1 ? Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: widget.data.colorOfText,fontSize: 11))
    : Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: Color.fromARGB(75, 100, 100, 100),fontSize: 11)) ;
 }
