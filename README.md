@@ -16,11 +16,23 @@ You cant undestand experience this game's ambience without playing or accomplish
 # Building and Running
 ***Compatible only with IOS(but i will make the project crossplatform)***
 
+1. First Way to build and run
 ```sh
 git clone link of project
 in main.dart file store your key into GEMINI_API variable
 cd scripts
-./install_flutter.sh
+./install_flutter.sh (if you dont have flutter on your device)
+./build.bash
+./Run.bash and choose platform
+```
+2.Second way
+[Quickly download multiple extensions (read this first)](#starquickly-download-multiple-extensions)
+
+```sh
+git clone link of project
+go to this link and download flutter - [Download](#starquickly-download-multiple-extensions) (read documentation how to install)
+in main.dart file store your key into GEMINI_API variable
+cd scripts
 ./build.bash
 ./Run.bash and choose platform
 ```
