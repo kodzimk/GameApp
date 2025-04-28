@@ -25,12 +25,11 @@ cd scripts
 ./build.bash
 ./Run.bash and choose platform
 ```
-2.Second way
-[Quickly download multiple extensions (read this first)](#starquickly-download-multiple-extensions)
+2.Second way<br>
+[Download](#starquickly-download-multiple-extensions) - install flutter
 
 ```sh
 git clone link of project
-go to this link and download flutter - [Download](#starquickly-download-multiple-extensions) (read documentation how to install)
 in main.dart file store your key into GEMINI_API variable
 cd scripts
 ./build.bash
