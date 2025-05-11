@@ -73,7 +73,6 @@ I was thinking to create database using MySql to save quest data.Unfortunately, 
 
 I would say there might be 2 issues.<br>
 Firstly, during dynamic search if you typed text in russian or kazakh or in any language,it possibly will not work.<br>
-Secondly,adjusting problems,this type of error might happen. It depends on resolution and size of the phone.<br>
 
 # Technology
 
