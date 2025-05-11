@@ -71,7 +71,7 @@ I was thinking to create database using MySql to save quest data.Unfortunately, 
 
 # Errors
 
-I would say there might be 2 issues.<br>
+I would say there might be 1 issue.<br>
 Firstly, during dynamic search if you typed text in russian or kazakh or in any language,it possibly will not work.<br>
 
 # Technology
