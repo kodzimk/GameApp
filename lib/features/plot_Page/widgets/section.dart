@@ -1,30 +1,24 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 
 class SectionData {
   final Color color;
   final Color colorOscuro;
-  final int etapa;
-  final int seccion;
   final int count;
   final List<String> titles;
-  final String titulo;
+  final String title;
   final Color colorOfText;
-  final int StartIndex;
+  final int startIndex;
   final List<String> textForQuest;
 
   const SectionData({
     required this.color,
     required this.colorOscuro,
-    required this.etapa,
-    required this.seccion,
-    required this.titulo,
+    required this.title,
     required this.count,
     required this.titles,
     required this.colorOfText,
-    required this.StartIndex,
+    required this.startIndex,
     required this.textForQuest,
   });
 }
@@ -43,20 +37,11 @@ class Section extends StatefulWidget {
   State<Section> createState() => _SectionState();
 }
  class _SectionState extends State<Section> {
-
-  Widget SetState(int i)
-  {
-    setState(() {
-    options[i + widget.data.StartIndex] = 1;
-    });
-    return Text('');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: [  
         Row(
           children: [
             const Expanded(
@@ -68,7 +53,7 @@ class Section extends StatefulWidget {
               width: 16,
             ),
             Text(
-              widget.data.titulo,
+              widget.data.title,
               style: const TextStyle(
                 color: Color.fromARGB(255, 42, 51, 54),
                 fontWeight: FontWeight.bold,
@@ -85,16 +70,17 @@ class Section extends StatefulWidget {
               ),
             ),
           ],
+
         ),
         const SizedBox(
           height: 24.0,
         ),
         ...List.generate(
           widget.data.count,
-          (i) => i % 9 != 20
+          (i) => i < widget.data.count
               ? Container(
                   margin: EdgeInsets.only(
-                    bottom: i != 8 ? 24.0 : 0,
+                    bottom: 24.0,
                     left: getLeft(i),
                     right: getRight(i),
                   ),
@@ -110,18 +96,17 @@ class Section extends StatefulWidget {
                   
                   child: ElevatedButton(
                     onPressed: ()  {
-                            if(options[i + widget.data.StartIndex] == 1 && i + widget.data.StartIndex + 1 <= 23)
+                            if(options[i + widget.data.startIndex] == 1 && i + widget.data.startIndex + 1 <= 23)
                             {
                               setState(() {
-                                 options[i + widget.data.StartIndex + 1] = 1;
+                                 options[i + widget.data.startIndex + 1] = 1;
                               });
                             }
                                     
-                            if(options[i + widget.data.StartIndex] == 1)
+                            if(options[i + widget.data.startIndex] == 1)
                             {
                                 Navigator.of(context).pushNamed('/Part',arguments: {widget.data.titles[i],widget.data.textForQuest[i]});
-                            }
-                            
+                            }  
                       },
                       
                       style: ElevatedButton.styleFrom(
@@ -132,7 +117,7 @@ class Section extends StatefulWidget {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       minimumSize: Size.zero,
                     ),
-                    child: VisibleButton(i),
+                    child: visibleButton(i),
                   ),
                 )
               : Container(),
@@ -141,13 +126,13 @@ class Section extends StatefulWidget {
     );
   }
 
-Widget VisibleButton(int i)
+Widget visibleButton(int i)
 {
   setState(() {
-       options[widget.data.StartIndex] = 1;
+       options[widget.data.startIndex] = 1;
   });
 
-  return options[i + widget.data.StartIndex] == 1 ? Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: widget.data.colorOfText,fontSize: 11))
+  return options[i + widget.data.startIndex] == 1 ? Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: widget.data.colorOfText,fontSize: 11))
    : Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: Color.fromARGB(75, 100, 100, 100),fontSize: 11)) ;
 }
  

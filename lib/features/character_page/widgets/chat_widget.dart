@@ -12,13 +12,12 @@ class CharacterPageWidget extends StatefulWidget {
 class _CharacterPageWidgetState extends State<CharacterPageWidget> {
 
   String chatCharacter = '';
-  bool ignore = true;
   String aboutCharacter = '';
-  String quesiton = '';
+  String question = '';
+  bool ignore = true;
 
   @override
   Widget build(BuildContext context) {
-    
     return Column(children: [Row(crossAxisAlignment: CrossAxisAlignment.start, children: [ 
              // Input field
                Container(
@@ -29,13 +28,11 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                 child:  SizedBox(width: 320,child:TextField(
                   decoration: defaultInputDecoration(),
                   onChanged: (value) {
-                    quesiton = value;
-                    quesiton = quesiton.capitalize();
+                    question = value.toUpperCase();
                   },
                 ),
               ),
-               ),
-
+            ),
 
             // Input field send button
               Container(
@@ -54,15 +51,15 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                   ),
                   child: ElevatedButton(
                     onPressed: ()
-                     async {      
-                    final gemini = Gemini.instance;
-                    gemini.prompt(parts: [
-                    Part.text(quesiton  + "from uncharted 4: A Theif End ,talk about him maximum 280 words"),
+                    async {      
+                      final gemini = Gemini.instance;
+                      gemini.prompt(parts: [
+                      Part.text("$question from uncharted 4: A Theif End ,talk about him maximum 280 words"),
                        ]).then((value)
                          {
-                         setState(() {
-                           aboutCharacter = value?.output ?? '';
-                           SetQuestion();
+                          setState(() {
+                            aboutCharacter = value?.output ?? '';
+                            setQuestion();
                            });
                          });       
                     },
@@ -78,7 +75,6 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                   ),
                 ),
           ]),
-
 
          // Text abotu smth
            SizedBox( 
@@ -140,56 +136,41 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
   }
   
 
-  void SetQuestion()
+  void setQuestion()
   {
-    for(int i = 0;i < quesiton.length;i++)
+    int index = question.indexOf(' ');
+    if(index != -1)
     {
-      if(quesiton[i] == ' ' || quesiton[i] == ',')
-      {
-        quesiton = quesiton.substring(0,i);
-        break;
-      }
+      question = question.substring(0, question.indexOf(' ')).toUpperCase();
     }
 
-    if(quesiton.toUpperCase() == "NATHAN" || quesiton.toUpperCase() == "GUSTAVO" || quesiton.toUpperCase() == "ROSS" || quesiton.toUpperCase() == "ADLER" || quesiton.toUpperCase() == "SAM" || quesiton.toUpperCase() == "JAMESON" || 
-      quesiton.toUpperCase() == "ELENA" || quesiton.toUpperCase() == "VICTOR"||  quesiton.toUpperCase() == "SULLIVAN" || quesiton.toUpperCase() == "FISHER" ||  quesiton.toUpperCase() == "VARGAS" ||quesiton.toUpperCase() == "SHORELINE" || 
-      quesiton.toUpperCase() ==  "RAFE" || quesiton.toUpperCase() ==  "HECTOR" || quesiton.toUpperCase() ==  "DRAKE" || quesiton.toUpperCase() ==  "ALCAZAR" || quesiton.toUpperCase() == "FRANCIS" ||
-      quesiton.toUpperCase() ==  "CASSIE" || quesiton.toUpperCase() ==  "EVELYN" || quesiton.toUpperCase() ==  "NADINE" || quesiton.toUpperCase() ==  "ROSS" || quesiton.toUpperCase() == "CHRISTOPHER" ||
-      quesiton.toUpperCase() == "MORGAN" || quesiton.toUpperCase() ==  "CASSANDRA"|| quesiton.toUpperCase() == "KAISAR" || quesiton.toUpperCase() == "RICHARD" || quesiton.toUpperCase() == "THOMAS"|| quesiton.toUpperCase() == "TEW")
+    if(question == "NATHAN" || question== "GUSTAVO" || question == "ROSS" || question == "ADLER" || question == "SAM" || question == "JAMESON" || 
+      question == "ELENA" || question == "VICTOR"||  question== "SULLIVAN" || question == "FISHER" ||  question == "VARGAS" ||question == "SHORELINE" || 
+      question ==  "RAFE" || question ==  "HECTOR" || question ==  "DRAKE" || question ==  "ALCAZAR" || question == "FRANCIS" ||
+      question ==  "CASSIE" || question ==  "EVELYN" || question ==  "NADINE" || question ==  "ROSS" || question == "CHRISTOPHER" ||
+      question == "MORGAN" || question ==  "CASSANDRA"|| question == "KAISAR" || question == "RICHARD" || question == "THOMAS"|| question== "TEW")
       {
           ignore = false;
-          chatCharacter = quesiton;
+          chatCharacter = question;
       }
       else
       {
-      for(int i = 0;i < aboutCharacter.length;i++)
-      {
-        if(aboutCharacter[i] == ' ' || aboutCharacter[i] == ',')
+         chatCharacter = aboutCharacter.substring(0, aboutCharacter.indexOf(' ')).toUpperCase();
+
+        if(chatCharacter == "NATHAN" || chatCharacter == "GUSTAVO" || chatCharacter == "ROSS" || chatCharacter == "ADLER" || chatCharacter == "SAM" || chatCharacter == "JAMESON" || 
+           chatCharacter == "ELENA" || chatCharacter == "VICTOR"||  chatCharacter == "SULLIVAN" || chatCharacter == "FISHER" ||  chatCharacter == "VARGAS" ||chatCharacter == "SHORELINE" || 
+           chatCharacter ==  "RAFE" || chatCharacter ==  "HECTOR" || chatCharacter ==  "DRAKE" || chatCharacter ==  "ALCAZAR" || chatCharacter == "FRANCIS" ||
+           chatCharacter ==  "CASSIE" || chatCharacter ==  "EVELYN" || chatCharacter ==  "NADINE" || chatCharacter ==  "ROSS" || chatCharacter == "CHRISTOPHER" ||
+           chatCharacter == "MORGAN" || chatCharacter ==  "CASSANDRA"|| chatCharacter == "KAISAR" || chatCharacter == "RICHARD" || chatCharacter == "THOMAS"|| chatCharacter == "TEW")
           {
-             chatCharacter = aboutCharacter.substring(0,i);
-             break;
+            ignore = false;
+          }
+          else
+          {
+            ignore = true;
           }
       }
-  if(chatCharacter.toUpperCase() == "NATHAN" || chatCharacter.toUpperCase() == "GUSTAVO" || chatCharacter.toUpperCase() == "ROSS" || chatCharacter.toUpperCase() == "ADLER" || chatCharacter.toUpperCase() == "SAM" || chatCharacter.toUpperCase() == "JAMESON" || 
-      chatCharacter.toUpperCase() == "ELENA" || chatCharacter.toUpperCase() == "VICTOR"||  chatCharacter.toUpperCase() == "SULLIVAN" || chatCharacter.toUpperCase() == "FISHER" ||  chatCharacter.toUpperCase() == "VARGAS" ||chatCharacter.toUpperCase() == "SHORELINE" || 
-      chatCharacter.toUpperCase() ==  "RAFE" || chatCharacter.toUpperCase() ==  "HECTOR" || chatCharacter.toUpperCase() ==  "DRAKE" || chatCharacter.toUpperCase() ==  "ALCAZAR" || chatCharacter.toUpperCase() == "FRANCIS" ||
-      chatCharacter.toUpperCase() ==  "CASSIE" || chatCharacter.toUpperCase() ==  "EVELYN" || chatCharacter.toUpperCase() ==  "NADINE" || chatCharacter.toUpperCase() ==  "ROSS" || chatCharacter.toUpperCase() == "CHRISTOPHER" ||
-      chatCharacter.toUpperCase() == "MORGAN" || chatCharacter.toUpperCase() ==  "CASSANDRA"|| chatCharacter.toUpperCase() == "KAISAR" || chatCharacter.toUpperCase() == "RICHARD" || chatCharacter.toUpperCase() == "THOMAS"|| chatCharacter.toUpperCase() == "TEW")
-      {
-          ignore = false;
-        }
-        else{
-               ignore = true;
-            }
-      }
   }
-
-}
-
-extension StringExtensions on String { 
-  String capitalize() { 
-    return "${this[0].toUpperCase()}${this.substring(1)}"; 
-  } 
 }
 
 InputDecoration defaultInputDecoration({

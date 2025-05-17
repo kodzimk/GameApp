@@ -3,9 +3,9 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter/material.dart';
 import 'uncharted_app.dart';
 
-const GEMINI_API = "AIzaSyBFId0llJBa6pdcZPOe8FI1DGCfC9hDAWs";
+final String geminiApi = "AIzaSyBFId0llJBa6pdcZPOe8FI1DGCfC9hDAWs";
 
 void main() {
-  Gemini.init(apiKey: GEMINI_API);
+  Gemini.init(apiKey: geminiApi);
   runApp(DevicePreview(isToolbarVisible: false, builder: (context) => const UnchartedApp()));
 }

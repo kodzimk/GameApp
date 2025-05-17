@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 class BottomApp extends StatelessWidget {
-  int _selectedIndex = 0;
-  final ScrollController _homeController = ScrollController();
+  const BottomApp({super.key});
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(height: 130, child: BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       elevation: 10.0,
         items: [
-          BottomNavigationBarItem( 
-             
+          BottomNavigationBarItem(          
               icon:  SingleChildScrollView(child:Center( widthFactor: 0.0,heightFactor: 1.55, child: Image(
               image: AssetImage('assets/images/playIcon.png'),
               width: 45.0,
@@ -43,7 +42,6 @@ class BottomApp extends StatelessWidget {
           ),
         ],
         backgroundColor: Color.fromARGB(255,105,86,80),
-        currentIndex: _selectedIndex,
         onTap: (int index) {
                  switch (index) {
             case 0:
@@ -54,19 +52,5 @@ class BottomApp extends StatelessWidget {
         }
        ),
    );
-  }
-}
-
-class TopApp extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      title: Text(
-        'Uncharted 4 : A Theif End',
-      style: Theme.of(context).textTheme.bodyMedium,
-      ),
-    );
   }
 }

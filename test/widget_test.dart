@@ -7,8 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:uncharted/main.dart';
 import 'package:uncharted/uncharted_app.dart';
 
 void main() {
