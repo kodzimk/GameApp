@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class PartPage extends StatefulWidget {
@@ -15,23 +14,16 @@ class ScreenArguments {
 }
 
 class __PartPageState extends State<PartPage> {
-      
     String appBarText = '';
     String arcText = '';
-    bool isTake =false;
 
-     @override
-     void didChangeDependencies() {
-     final args = ModalRoute.of(context)!.settings.arguments ;
-    if(args == null)
-    {
-         log("null");
-    }
-
+    @override
+    void didChangeDependencies() {
+      final args = ModalRoute.of(context)!.settings.arguments;
       setState(() {
           appBarText = args.toString();
-           for(int i = 0;i < appBarText.length;i++)
-           {
+          for(int i = 0;i < appBarText.length;i++)
+          {
               if(appBarText[i] == ',')
               {
                   arcText = appBarText.substring(i + 1,appBarText.length - 1);
@@ -59,15 +51,14 @@ class __PartPageState extends State<PartPage> {
             top: 30,
             left:20,
           ),
-          child:  TextArc(),
-          
-        ),
-        
+          child:  textArc(),
+        ),     
     );
   }
-  Widget TextArc() 
+  
+  Widget textArc() 
   {
-              return SingleChildScrollView(child:  Text(
+      return SingleChildScrollView(child:  Text(
               arcText,
               style:  TextStyle(
               fontFamily: 'Cinzel',

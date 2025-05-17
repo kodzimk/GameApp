@@ -1,12 +1,8 @@
-
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import '../widgets/section.dart';
 import '../widgets/bottom_app.dart';
 
-
-// I KNOW THAT IS ILLEGAL BUT TRUST ME NEXT TIME I WILL WRITE BETTER CODE,SORRYYYYYYY
+// I KNOW THIS IS ILLEGAL BUT TRUST ME NEXT TIME I WILL WRITE BETTER CODE,SORRYYYYYYY
 
 List<String> text = [
   "The story starts in medias res where Nathan Drake and his brother Samuel Drake are being chased through the seas during a storm by Shoreline mercenaries. They race towards an island that is of some importance to the brothers and the mercenaries."
@@ -163,61 +159,51 @@ class _PlotPageState extends State<PlotPage> {
      SectionData(
       color: Color.fromARGB(255,43,39,36),
       colorOscuro: _darkenColor(Color.fromARGB(255,43,39,36), 0.1),
-      etapa: 1,
-      seccion: 1,
       count: 1,
-      titulo: 'Prology',
+      title: 'Prology',
       titles: prology,
       colorOfText: Colors.white,
-      StartIndex: 0,
+      startIndex: 0,
       textForQuest: text,
      ),
       SectionData(
       color: Color.fromARGB(255,73,59,56),
       colorOscuro: _darkenColor(Color.fromARGB(255,73,59,56), 0.1),
-      etapa: 1,
-      seccion: 2,
       count: 7,
-      titulo: 'The Lure of Adventure',
+      title: 'The Lure of Adventure',
       titles: first,
       colorOfText: Colors.white,
-      StartIndex: 1,
+      startIndex: 1,
       textForQuest: text2,
     ),
     SectionData(
       color: Color.fromARGB(255, 185,155,140),
       colorOscuro: _darkenColor(Color.fromARGB(255, 185,155,140), 0.1),
-      etapa: 1,
-      seccion: 3,
       count: 7,
-      titulo: "The Grave of Henry Avery",
+      title: "The Grave of Henry Avery",
       titles: second,
       colorOfText: Colors.white,
-      StartIndex: 8,
+      startIndex: 8,
       textForQuest: text3,
     ),
     SectionData(
       color: Color.fromARGB(255, 222,210,206),
       colorOscuro: _darkenColor(Color.fromARGB(255, 222,210,206), 0.1),
-      etapa: 1,
-      seccion: 4,
       count: 8,
-      titulo: "The Thieves of Libertalia",
+      title: "The Thieves of Libertalia",
       titles: third,
       colorOfText: Color.fromARGB(255,73,59,56),
-      StartIndex: 15,
+      startIndex: 15,
       textForQuest: text4,
     ),
     SectionData(
       color: Color.fromARGB(255, 242,240,246),
       colorOscuro: _darkenColor(Color.fromARGB(255, 242,240,246), 0.1),
-      etapa: 1,
-      seccion: 4,
       count: 1,
-      titulo: "Epilogue",
+      title: "Epilogue",
       titles: epilogue,
       colorOfText: Color.fromARGB(255,0,0,0),
-      StartIndex: 23,
+      startIndex: 23,
       textForQuest: text5,
     ),
   ];
@@ -232,14 +218,14 @@ class _PlotPageState extends State<PlotPage> {
         children: [
           ListView.separated(
             controller: scrollCtrl,
-            itemBuilder: (_, i) => i == 0
+            itemBuilder: (context, i) => i == 0
                 ? SizedBox(
                     height: 0.0,
                   )
                 : Section(
                     data: data[i - 1],
                   ),
-            separatorBuilder: (_, i) => const SizedBox(
+            separatorBuilder: (context, i) => const SizedBox(
               height: 24.0,
             ),
             itemCount: data.length + 1,
