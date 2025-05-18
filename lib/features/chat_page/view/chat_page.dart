@@ -56,7 +56,7 @@ class _ChatPageState extends State<ChatPage> {
             .then((value) {
                ChatMessage? lastmessage = m.firstOrNull;
                if(lastmessage != null && lastmessage.user == geminiUser){
-                  lastmessage.text += value as String ;
+                  lastmessage.text += value as String;
                   setState(() {
                    m = [lastmessage,...m];
                 });

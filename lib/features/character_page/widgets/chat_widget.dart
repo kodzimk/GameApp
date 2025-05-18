@@ -76,7 +76,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                 ),
           ]),
 
-         // Text abotu smth
+         // Text about smth
            SizedBox( 
            child: Container(
               margin: EdgeInsets.only(

@@ -77,8 +77,7 @@ class Section extends StatefulWidget {
         ),
         ...List.generate(
           widget.data.count,
-          (i) => i < widget.data.count
-              ? Container(
+          (i) => Container(
                   margin: EdgeInsets.only(
                     bottom: 24.0,
                     left: getLeft(i),
@@ -112,15 +111,12 @@ class Section extends StatefulWidget {
                       style: ElevatedButton.styleFrom(
                       backgroundColor: widget.data.color,
                       fixedSize: const Size(180, 48),
-                      elevation: 0,
                       padding: EdgeInsets.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      minimumSize: Size.zero,
                     ),
                     child: visibleButton(i),
                   ),
                 )
-              : Container(),
         )
       ],
     );

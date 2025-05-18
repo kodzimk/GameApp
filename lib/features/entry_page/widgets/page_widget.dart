@@ -33,7 +33,7 @@ class _EntryPageMainWidgetState extends State<EntryPageMainWidget> {
       children: <Widget>[
          Container(
           decoration:  BoxDecoration(
-            image: DecorationImage(image: AssetImage("assets/images/Background5.png"),scale: 1.2, fit: BoxFit.cover,),
+            image: DecorationImage(image: AssetImage("assets/images/Background5.png"),scale: 1.2, fit: BoxFit.cover),
           ),
         ),
 

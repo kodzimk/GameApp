@@ -207,30 +207,23 @@ class _PlotPageState extends State<PlotPage> {
       textForQuest: text5,
     ),
   ];
-  final scrollCtrl = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255,125,108,104),
       bottomNavigationBar: BottomApp(),
-        body: Stack(
-        children: [
+        body: 
           ListView.separated(
-            controller: scrollCtrl,
-            itemBuilder: (context, i) => i == 0
-                ? SizedBox(
-                    height: 0.0,
-                  )
-                : Section(
-                    data: data[i - 1],
+            controller: ScrollController(),
+            itemBuilder: (context, i) => Section(
+                    data: data[i],
                   ),
             separatorBuilder: (context, i) => const SizedBox(
               height: 24.0,
             ),
-            itemCount: data.length + 1,
-          ),],
-      ),
+            itemCount: data.length,
+          ),
     );
 
   }
