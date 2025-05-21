@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
+import 'package:uncharted/API/service_model.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -43,31 +46,16 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  void _sendMessage(ChatMessage chatMessage){
+  void _sendMessage(ChatMessage chatMessage) async {
        setState(() {
-         m = [chatMessage, ...m];
+          m = [chatMessage, ...m];
         });
-            Gemini.instance.chat([
-            Content(parts: [
-                    Part.text("Your are $character from Uncharted 4 : A Theif's End")],role: 'user'),
-            Content(parts: [ 
-                    Part.text(chatMessage.text)],  role: 'user'),
-            ])
-            .then((value) {
-               ChatMessage? lastmessage = m.firstOrNull;
-               if(lastmessage != null && lastmessage.user == geminiUser){
-                  lastmessage.text += value as String;
+        await sendMessage(character, chatMessage.text).then((value){
+            ChatMessage message = ChatMessage(user: geminiUser, createdAt: DateTime.now(),text: value ?? "");
                   setState(() {
-                   m = [lastmessage,...m];
-                });
-            }
-               else{
-                 ChatMessage message = ChatMessage(user: geminiUser, createdAt: DateTime.now(),text: value?.output ?? "");
-                 setState(() {
-                  m = [message,...m];
-              });
-            }
-    });
+                   m = [message,...m];
+        });
+      });  
   }
 }
 

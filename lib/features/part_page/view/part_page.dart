@@ -21,15 +21,8 @@ class __PartPageState extends State<PartPage> {
     void didChangeDependencies() {
       final args = ModalRoute.of(context)!.settings.arguments;
       setState(() {
-          appBarText = args.toString();
-          for(int i = 0;i < appBarText.length;i++)
-          {
-              if(appBarText[i] == ',')
-              {
-                  arcText = appBarText.substring(i + 1,appBarText.length - 1);
-                  appBarText = appBarText.substring(1,i);
-              }
-           }
+            arcText = args.toString().substring(args.toString().indexOf(',') + 1,args.toString().length - 1);
+            appBarText = args.toString().substring(1,args.toString().indexOf(','));
       });
 
     super.didChangeDependencies();

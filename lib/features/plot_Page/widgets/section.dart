@@ -129,7 +129,7 @@ Widget visibleButton(int i)
   });
 
   return options[i + widget.data.startIndex] == 1 ? Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: widget.data.colorOfText,fontSize: 11))
-   : Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: Color.fromARGB(75, 100, 100, 100),fontSize: 11)) ;
+                                      : Text(widget.data.titles[i],style: TextStyle(fontFamily: 'Cinzel',color: Color.fromARGB(75, 100, 100, 100),fontSize: 11));
 }
  
 

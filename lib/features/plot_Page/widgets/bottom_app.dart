@@ -24,7 +24,7 @@ class BottomApp extends StatelessWidget {
               image: AssetImage('assets/images/compassIcon.png'),
               width: 45.0,
               height: 45.0,
-                         color:  Color.fromARGB(150, 0, 0, 0),
+              color:  Color.fromARGB(150, 0, 0, 0),
              ),
             ),
           ),
@@ -35,7 +35,7 @@ class BottomApp extends StatelessWidget {
               image: AssetImage('assets/images/theifIcon.png'),
               width: 45.0,
               height: 40.0, 
-               color:  Color.fromARGB(150, 0, 0, 0),   
+              color:  Color.fromARGB(150, 0, 0, 0),   
              ),
             ),
             label: ''

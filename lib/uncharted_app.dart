@@ -18,7 +18,7 @@ class _UnchartedAppState extends State<UnchartedApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Uncharted',
-      theme: darkTheme,
+      theme: appTheme,
       routes: {
         '/Entry': (context) => EntryPage(),
         '/Plot': (context) => PlotPage(),

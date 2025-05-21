@@ -15,6 +15,8 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
   String aboutCharacter = '';
   String question = '';
   bool ignore = true;
+  final List<String> characters = ["NATHAN","GUSTAVO","ROSS", "ADLER","SAM","JAMESON","ELENA","VICTOR","SULLIVAN","FISHER","VARGAS","SHORELINE",
+  "RAFE",  "HECTOR","DRAKE", "ALCAZAR" ,"FRANCIS","CASSIE", "EVELYN","NADINE","ROSS","CHRISTOPHER","MORGAN","CASSANDRA","KAISAR","RICHARD","THOMAS","TEW"];
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +54,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                   child: ElevatedButton(
                     onPressed: ()
                     async {      
-                      final gemini = Gemini.instance;
-                      gemini.prompt(parts: [
+                      Gemini.instance.prompt(parts: [
                       Part.text("$question from uncharted 4: A Theif End ,talk about him maximum 280 words"),
                        ]).then((value)
                          {
@@ -99,15 +100,6 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                   margin: EdgeInsets.only(
                     right: 160,
                   ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(      
-                        color: Color.fromARGB(255,105,86,80),
-                        width: 4.0,
-                      ),
-                    ),
-                    borderRadius: BorderRadius.circular(26.0),
-                  ),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pushNamed(
@@ -119,9 +111,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                       backgroundColor: Color.fromARGB(255,105,86,80),
                       fixedSize: const Size(200, 38),
                       elevation: 0,
-                      padding: EdgeInsets.zero,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      minimumSize: Size.zero,                      
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,               
                     ),
                     child: Text(
                       'Start chat',
@@ -144,32 +134,16 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
       question = question.substring(0, question.indexOf(' ')).toUpperCase();
     }
 
-    if(question == "NATHAN" || question== "GUSTAVO" || question == "ROSS" || question == "ADLER" || question == "SAM" || question == "JAMESON" || 
-      question == "ELENA" || question == "VICTOR"||  question== "SULLIVAN" || question == "FISHER" ||  question == "VARGAS" ||question == "SHORELINE" || 
-      question ==  "RAFE" || question ==  "HECTOR" || question ==  "DRAKE" || question ==  "ALCAZAR" || question == "FRANCIS" ||
-      question ==  "CASSIE" || question ==  "EVELYN" || question ==  "NADINE" || question ==  "ROSS" || question == "CHRISTOPHER" ||
-      question == "MORGAN" || question ==  "CASSANDRA"|| question == "KAISAR" || question == "RICHARD" || question == "THOMAS"|| question== "TEW")
-      {
-          ignore = false;
-          chatCharacter = question;
-      }
-      else
-      {
-         chatCharacter = aboutCharacter.substring(0, aboutCharacter.indexOf(' ')).toUpperCase();
-
-        if(chatCharacter == "NATHAN" || chatCharacter == "GUSTAVO" || chatCharacter == "ROSS" || chatCharacter == "ADLER" || chatCharacter == "SAM" || chatCharacter == "JAMESON" || 
-           chatCharacter == "ELENA" || chatCharacter == "VICTOR"||  chatCharacter == "SULLIVAN" || chatCharacter == "FISHER" ||  chatCharacter == "VARGAS" ||chatCharacter == "SHORELINE" || 
-           chatCharacter ==  "RAFE" || chatCharacter ==  "HECTOR" || chatCharacter ==  "DRAKE" || chatCharacter ==  "ALCAZAR" || chatCharacter == "FRANCIS" ||
-           chatCharacter ==  "CASSIE" || chatCharacter ==  "EVELYN" || chatCharacter ==  "NADINE" || chatCharacter ==  "ROSS" || chatCharacter == "CHRISTOPHER" ||
-           chatCharacter == "MORGAN" || chatCharacter ==  "CASSANDRA"|| chatCharacter == "KAISAR" || chatCharacter == "RICHARD" || chatCharacter == "THOMAS"|| chatCharacter == "TEW")
-          {
-            ignore = false;
-          }
-          else
-          {
-            ignore = true;
-          }
-      }
+    if(characters.contains(question))
+    {
+        ignore = false;
+        chatCharacter = question;
+    }
+    else
+    {
+        chatCharacter = aboutCharacter.substring(0, aboutCharacter.indexOf(' ')).toUpperCase();
+        ignore = !characters.contains(chatCharacter);
+    }
   }
 }
 

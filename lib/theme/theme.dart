@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final darkTheme = ThemeData(
+final appTheme = ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(255, 41, 39, 39),
         textTheme: TextTheme(
             bodyMedium: TextStyle(

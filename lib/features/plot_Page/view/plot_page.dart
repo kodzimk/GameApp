@@ -10,7 +10,6 @@ List<String> text = [
   "Before they could get close enough, the bigger Shoreline ship that Nate destroyed appears out of nowhere and rams Nate and Sam's boat, shipwrecking and separating the two. Nate passes out and a flashback starts and explains how did they get up to that point."
   "\n\n You met:\n Nathan Drake , Sam Drake , Shoreline"
 ];
-
 List<String> text2 = [
    "After passing out from a collision at sea, Nathan Drake remembers the night his life changed. In the 1980s, when he was 12 years old, he was being scolded by a nun in the Saint Francis Boys' Home for starting a fight. The nun, impatient with Nathan's behavior, leaves him alone in his room while all the other boys have left for a Bible retreat. Moments later, he spots his older brother, Sam, calling out to him with a flashlight. Tired of his life in the orphanage, Nate sneaks out of his room through the window to meet up with Sam."
    "Sam shows Nate his new 500cc twin engine motorcycle, to which Nate quickly judges Sam that he stole it, but Sam dismisses it by saying he truthfully bought it. Nate immediately realizes Sam's intentions to go out of the country for a well-paying job and is disappointed when he explains that he will use the money to get him out of the orphanage, but not for a couple more years. Desperate, Nate tries to reason to Sam that he just wants to run away with him instead."
@@ -47,7 +46,6 @@ List<String> text2 = [
     "\n\n You met:\n Elena\n\n",
 
 ];
-
 List<String> text3 = [
 
           "Nate and Sam fly to Scotland with Sully's help in search of Avery's grave. While making their way, Sam asks what happened between Nate and Rafe following Sam's presumed death. Nate explains that the both of them quickly grew tired with one another — Nate for his continued mourning, and Rafe's frustration regarding Avery's treasure. Sam agrees with Nate's assessment of Rafe being considerably ruthless."
@@ -86,7 +84,6 @@ List<String> text3 = [
     "In the game, Nate and Sam follow this trail of betrayal, clues, and dreams of fortune. They find the remnants of Libertalia — not a paradise, but a decaying ruin, wrecked by the same greed that built it.The deeper you go into the story, the more 'Join me in paradise' turns bitter — it’s a warning more than a promise."
     "\n\n You met:\n No one\n",
 ];
-
 List<String> text4 = [
       "In this chapter of Uncharted 4, Nate and Sam finally step into Libertalia, the legendary pirate utopia they've been chasing. It’s a ghost city now, wild and overgrown, with massive pirate statues, crumbling mansions, and the remains of a dream long dead. At first, there’s this feeling of awe — it’s clear that Libertalia was once a true paradise built by pirates who wanted freedom from the world’s kings and rules."
       "But as they move deeper, they start noticing something darker. Streets are wrecked. There are signs of fighting. Documents and murals tell pieces of the story: the pirates who built this place — the founders — had set up a society where their treasures were supposed to be shared. Yet somewhere along the way, trust broke down."
@@ -126,7 +123,6 @@ List<String> text4 = [
       "Nate then tries to free Sam, but the two are unable to lift the beam. With seemingly no hope for his survival, Sam tells Nate that his wish was to find the treasure together with Nate, and he urges Nate to escape alone, saying that the ship is about to 'blow up'. Nate then fires a cannon in the hold, blowing a hole in the ship's floor and flooding it, allowing him and Sam leverage in order to move the beam. The two brothers swim out of the ship and out of the cave. Immediately after they escape, more explosions block the cave's mouth. Elena helps Nate and Sam out of the water, and she fires a flare to signal their location to Sully. The four leave Libertalia on Sully's plane."
       "\n\n You met:\n No one\n",
 ];
-
 List<String> text5 = [
         "Nathan Drake and Elena Fisher's daughter, Cassie, plays her mother's copy of Crash Bandicoot. After beating the level and turning off the game, she wonders aloud where her parents are. The family dog, Vicky, accompanies Cassie as she searches the house."
       "The beach house, lived-in and full of various finds from expeditions, is empty save for the two of them. Cassie finds a letter in the kitchen, sent by Sully. In it, he tells Nate that he and Cassie's uncle Sam — who both have since retired and are currently in Havana, Cuba — have quit smoking and that they'll be visiting soon."
@@ -134,15 +130,13 @@ List<String> text5 = [
       "As he and Cassie walk out of the workshop, he begins to regale her with the full story of Sir Francis Drake and El Dorado.[1] Elena watches them go for a moment, before returning inside to place the photo back in the book alongside the one of Nate and Sam."
       "\n\n You met:\n Cassie\n",
 ];
-
-
 List<String> prology = ["Prology"];
 List<String> epilogue = ["Epilogue"];
 List<String> first = ["The Lure of Adventure","Infernal Place","The Malaysia Job","A Normal Life","Hector Alcazar","Once a Thief","Lights Out"];
 List<String> second = ["The Grave of Henry Avery","Those Who Prove Worthy","The Twelve Towers","Hidden in Plain Sight","At Sea","Marooned","Join Me in Paradise"];
 List<String> third = ["The Thieves of Libertalia","The Brothers Drake","For Better or Worse","New Devon","Avery's Descent","No Escape","Brother's Keeper","A Thief's End"];
 Color _darkenColor(Color color, double factor) {
-  return HSLColor.fromColor(color)
+      return HSLColor.fromColor(color)
       .withLightness(
           (HSLColor.fromColor(color).lightness - factor).clamp(0.0, 1.0))
       .toColor();
