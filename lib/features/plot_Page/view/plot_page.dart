@@ -206,7 +206,10 @@ class _PlotPageState extends State<PlotPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255,125,108,104),
+      // Bottom App
       bottomNavigationBar: BottomApp(),
+
+      // Building each section(Plot lines)
         body: 
           ListView.separated(
             controller: ScrollController(),
