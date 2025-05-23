@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
-
 class CharacterPageWidget extends StatefulWidget {
   const CharacterPageWidget({super.key});
 
@@ -55,7 +54,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
                     onPressed: ()
                     async {      
                       Gemini.instance.prompt(parts: [
-                      Part.text("$question from uncharted 4: A Theif End ,talk about him maximum 280 words"),
+                      Part.text("if $question character from uncharted 4: A Theif End ,talk about him maximum 280 words "),
                        ]).then((value)
                          {
                           setState(() {
@@ -131,7 +130,7 @@ class _CharacterPageWidgetState extends State<CharacterPageWidget> {
     int index = question.indexOf(' ');
     if(index != -1)
     {
-      question = question.substring(0, question.indexOf(' ')).toUpperCase();
+      question = question.substring(0, index).toUpperCase();
     }
 
     if(characters.contains(question))

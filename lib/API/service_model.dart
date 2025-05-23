@@ -23,9 +23,15 @@ Future<String?> sendMessage(String character,String question) async {
               "You are $character from Uncharted 4:A Theif's End"
         }
       ]
+    },
+    
+    "generationConfig": {
+      "maxOutputTokens": 280 ,
+      "frequencyPenalty": 1.0,
     }
   };
 
+  
   final response = await http.post(
     Uri.parse(url),
     headers: {
